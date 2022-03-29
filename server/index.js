@@ -46,6 +46,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log("Welcome");
 });
