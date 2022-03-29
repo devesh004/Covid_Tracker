@@ -15,15 +15,13 @@ JWT_SECRET : any secret string
 
 ### Install Dependencies
  ```
-cd server
 npm install
-cd ..
 cd client
 npm install
 ```
+
 ### Run
 ```
-cd server
 npm start
 ```
 
