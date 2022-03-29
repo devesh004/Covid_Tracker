@@ -6,7 +6,7 @@
 
 ### Env variables
 
-Create a .env file in server folder and add the following details
+Create a .env file in root folder and add the following variables
 
 ```
 DB_URL : your mongo db atlas connection string
