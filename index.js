@@ -40,7 +40,7 @@ app.use("/api/auth/", authRoutes);
 if (process.env.NODE_ENV === "production") {
   //set static folder
   app.use(express.static(path.join(__dirname, "../client", "build")));
-
+  //add routes
   app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
   });
