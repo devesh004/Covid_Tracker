@@ -1,58 +1,15 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { mobile } from "../responsive";
+import {
+  Container,
+  Form,
+  Nav,
+  Navbar,
+  NavDropdown,
+  Button,
+} from "react-bootstrap";
+import { publicRequest } from "../requestMethod";
 
-const Container = styled.div`
-  display: flex;
-  height: 60px;
-  background-color: white;
-  color: #555;
-  font-size: 16px;
-  box-shadow: 0px 0px 15px 3px #61616183;
-  ${mobile({
-    width: "375px",
-    flexDirection: "column",
-    marginBottom: "15px",
-    height: "130px",
-  })}
-`;
-const Left = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const Filter = styled.span`
-  font-size: large;
-  font-weight: 600;
-`;
-const Select = styled.select`
-  padding: 0.7rem;
-  border-radius: 1rem;
-  background-color: #d1d1d190;
-  font-size: 0.9rem;
-  ${mobile({ width: "80%" })}
-`;
-const Option = styled.option`
-  ${mobile({ height: "20px" })}
-`;
-const Right = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  ${mobile({ margin: "5px 5px" })}
-`;
-const Date = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-const From = styled.span``;
-const SelectedDate = styled.span``;
-
-const Topbar = ({ chngHandler, from, changeDataLimit }) => {
+const Topbar = ({ chngHandler, from, changeDataLimit, logout }) => {
   const [countries, setCountries] = useState([]);
 
   useEffect(async () => {
@@ -64,57 +21,76 @@ const Topbar = ({ chngHandler, from, changeDataLimit }) => {
   }, []);
 
   return (
-    <Container>
-      <Left>
-        <Filter>Country</Filter>
-        <Select
-          // defaultValue="India"
-          onChange={(e) => {
-            chngHandler(e.target.value);
-          }}
-        >
-          {countries.map((el) => {
-            if (el === "India")
-              return (
-                <Option key={el} selected value={el}>
-                  India
-                </Option>
-              );
-            else
-              return (
-                <Option key={el} value={el}>
-                  {el}
-                </Option>
-              );
-          })}
-        </Select>
-        {/* <Select>
-          <Option>Select Gender</Option>
-          <Option value={Male}>Male</Option>
-          <Option>Female</Option>
-        </Select>
-        <Select>
-          <Option>Select Age</Option>
-          <Option></Option>
-        </Select> */}
-      </Left>
-      <Right>
-        <Date>
-          <From>From</From>
-          <SelectedDate>{from}</SelectedDate>
-        </Date>
-        <Select
-          onChange={(e) => {
-            changeDataLimit(e.target.value);
-          }}
-        >
-          <Option value={15}>Last 10 days</Option>
-          <Option value={35}>Last 30 days</Option>
-          <Option value={185}>Last 6 months</Option>
-          <Option value={370}>Last 1 year</Option>
-        </Select>
-      </Right>
-    </Container>
+    <>
+      <Navbar className="shadow" bg="light" expand="lg">
+        <Container>
+          {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Form.Group className="d-flex">
+                <Form.Label htmlFor="con h5">Select country</Form.Label>
+                <Form.Select
+                  id="con"
+                  style={{ backgroundColor: "rgb(156, 156, 156,0.2)" }}
+                  onChange={(e) => {
+                    chngHandler(e.target.value);
+                  }}
+                >
+                  {countries.map((el) => {
+                    if (el === "India")
+                      return (
+                        <option key={el} selected value={el}>
+                          India
+                        </option>
+                      );
+                    else
+                      return (
+                        <option key={el} value={el}>
+                          {el}
+                        </option>
+                      );
+                  })}
+                </Form.Select>
+              </Form.Group>
+            </Nav>
+            <Nav>
+              <strong className="me-5">
+                <span className="mx-2">From</span>
+                {from}
+              </strong>
+            </Nav>
+            <Nav className="d-flex">
+              <Form.Group className="d-flex ms-auto">
+                <Form.Select
+                  id="range"
+                  onChange={(e) => {
+                    changeDataLimit(e.target.value);
+                  }}
+                  style={{ backgroundColor: "rgb(156, 156, 156,0.2)" }}
+                >
+                  <option value={15}>Last 10 days</option>
+                  <option value={35}>Last 30 days</option>
+                  <option value={185}>Last 6 months</option>
+                  <option value={370}>Last 1 year</option>
+                </Form.Select>
+              </Form.Group>
+            </Nav>
+            <Nav>
+              <Button
+                onClick={() => {
+                  logout();
+                }}
+                variant="danger"
+                className="mx-1"
+              >
+                Logout
+              </Button>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
   );
 };
 
