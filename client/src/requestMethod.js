@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseUrl = `${window.location.href}api/`;
+const BaseUrl = `${window.location.origin}/api/`;
 // const BaseUrl = `http://localhost:3001/api/`;
 
 console.log(BaseUrl);
