@@ -56,6 +56,7 @@ const Login = ({ changeUser }) => {
       username: "guest",
       password: "12345",
     });
+    localStorage.setItem("currentUser", JSON.stringify(res.data));
     changeUser(res.data);
   };
 
