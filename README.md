@@ -26,6 +26,11 @@ npm install
 cd server
 npm start
 ```
+
+## Production (Heroku)
+[https://covid-tracker-devesh.herokuapp.com/](https://covid-tracker-devesh.herokuapp.com/)
+
+
 ### Login page
 ![Screenshot (570)](https://user-images.githubusercontent.com/88090198/160587537-53ea3d3b-eadb-4ac9-92de-101cf7305dd1.png)
 
