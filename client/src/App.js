@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div>
-      <Router>
+      <Router basename="/">
         <Routes>
           {user && <Route path="/" element={<Home logout={logout} />} />}
         </Routes>

@@ -1,4 +1,5 @@
 {
+  "homepage": "https://covid-tracker-khaki.vercel.app/",
   "name": "covid_cases_tracker",
   "version": "0.1.0",
   "private": true,
